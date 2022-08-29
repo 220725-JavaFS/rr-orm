@@ -7,11 +7,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ricketts.mappers.Mapper;
+import com.ricketts.mappers.SqlMapper;
 import com.ricketts.models.Table;
 import com.ricketts.utils.ConnectionUtil;
 
 public class TableDAOImpl implements TableDAO {
-
+	
 	@Override
 	public void retrievePrimaryKey(Table table) {
 		try(Connection conn = ConnectionUtil.getConnection()){
@@ -73,11 +75,11 @@ public class TableDAOImpl implements TableDAO {
 				
 				if (listMember.equals(arrayList.get(lastIndex))) {
 					sb1.append(listMember + ") ");
-					sb2.append(listMember + " = ? ");
+					sb2.append(listMember);
 				}
 				else {
 				sb1.append(listMember + ", ");
-				sb2.append(listMember + " = ?, ");
+				sb2.append(listMember + " ");
 				}
 			}
 			
